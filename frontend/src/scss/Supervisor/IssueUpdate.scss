@@ -1,0 +1,272 @@
+@import "../colors";
+
+$green: #66b539;
+$dark-green: #1b4332;
+$light-green: #d1ffbd;
+$border-green: #e8f5e1;
+
+.sup-issues-page {
+  min-height: 100vh;
+  background-color: #f4faf0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+.sup-issues-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px;
+  background-color: #fff;
+  border-bottom: 2px solid $light-green;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  .sup-back-btn {
+    color: $green;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.2s;
+    &:hover { background-color: $light-green; }
+  }
+
+  .sup-issues-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1b2b1e;
+    letter-spacing: 1px;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Toolbar ── */
+.sup-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  background-color: #fff;
+  border-bottom: 1px solid #eef5ea;
+
+  .sup-issue-count {
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+  }
+
+  .sup-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sup-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1.5px solid #d1e8c4;
+    border-radius: 20px;
+    padding: 6px 14px;
+
+    svg { color: #aaa; font-size: 13px; }
+
+    input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 14px;
+      width: 200px;
+      color: #333;
+      &::placeholder { color: #bbb; }
+    }
+  }
+
+  .sup-sort {
+    padding: 7px 16px;
+    border: 1.5px solid $dark-green;
+    border-radius: 20px;
+    background: #fff;
+    color: $dark-green;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+    &:hover {
+      background: $dark-green;
+      color: #fff;
+    }
+  }
+}
+
+/* ── Cards ── */
+.sup-issues-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 32px;
+}
+
+.sup-issue-card {
+  background: #fff;
+  border: 1px solid $border-green;
+  border-top: 4px solid $green;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(102,181,57,0.10);
+  width: 100%;
+
+  .card-inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 18px 28px;
+  }
+
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 32px;
+  }
+
+  .info-line {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+
+    strong {
+      color: $dark-green;
+      font-weight: 600;
+    }
+  }
+
+  .location-link {
+    cursor: pointer;
+    color: #555;
+    text-decoration: underline dotted;
+    &:hover { color: $green; }
+  }
+
+  .card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .status-select {
+    padding: 7px 14px;
+    border: 1.5px solid $border-green;
+    border-radius: 8px;
+    background: #fafff6;
+    color: #333;
+    font-size: 13px;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    min-width: 150px;
+    transition: border 0.2s;
+
+    &:focus { border-color: $green; }
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  .issue-thumb {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid $border-green;
+  }
+
+  .no-image-text {
+    font-size: 12px;
+    color: #bbb;
+    font-style: italic;
+  }
+}
+
+/* ── Status badge ── */
+.sup-status-badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  align-self: flex-start;
+
+  &.pending      { background: #fff3cd; color: #856404; }
+  &.in-progress  { background: #cff4fc; color: #055160; }
+  &.completed    { background: #d1e7dd; color: #0a3622; }
+  &.complicated  { background: #f8d7da; color: #842029; }
+}
+
+/* ── Confirmation popup ── */
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: #fff;
+  padding: 32px 28px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 360px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+
+  p {
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  button {
+    padding: 9px 28px;
+    margin: 0 8px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    &:hover { opacity: 0.85; }
+  }
+
+  .confirm { background: $green; color: #fff; }
+  .cancel  { background: #dc3545; color: #fff; }
+}

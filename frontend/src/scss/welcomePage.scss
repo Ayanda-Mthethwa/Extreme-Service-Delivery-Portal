@@ -1,0 +1,497 @@
+@import './colors';
+@import '../scss/animation.scss';
+
+.welcome-body {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    color: white;
+}
+
+
+.welcome-body{
+
+    section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(315deg, #d1ffbd, #a6e796, #77cf73, #3eb751, #009c43, #007d41, #005e38, #06402b);
+    }
+}
+
+/*---------------------------------  LOADING SCREEN ------------------------------------------------------*/
+
+.loading-screen {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.loading-image {
+    width: 500px;
+    height: auto;
+    animation: pulse 3s infinite ease-in-out;
+}
+
+/*--------------------------------- SECTION 1 (WELCOME) ---------------------------------------------------*/
+
+#hero .welcome-section-box::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent 80%, rgba(255, 255, 255, 0.167));
+    z-index: -1;
+}
+
+.welcome-section-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    height: 85vh;
+    width: 85%;
+    overflow: hidden;
+
+}
+
+.content-wrap {
+    padding: 20px 50px;
+}
+
+.welcome-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.header-logo {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 45px;
+    height: auto;
+}
+
+.welcome-nav {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.welcome-nav-items {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    display: flex;
+    color: white;
+    justify-content: center;
+    text-wrap: nowrap;
+}
+
+.welcome-nav .active {
+    color: #15390ef1;
+}
+
+.welcome-nav-items::after {
+    content: ' ';
+    position: absolute;
+    bottom: -10px;
+    width: 80%;
+    height: 2px;
+    background-color: white;
+    box-shadow: 0 0 5px white;
+    transform: scale(0);
+    transform-origin: left;
+    transition: 0.3s;
+}
+
+.welcome-nav-items:hover::after {
+    transform: scale(1);
+}
+
+.active:hover::after {
+    background-color: #15390ef1;
+    box-shadow: 0 0 5px #15390ef1;
+}
+
+.hero-content h3 {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: -10px;
+    z-index: 2;
+}
+
+.hero-content {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-img {
+    width: 35%;
+    margin-top: -60px;
+    animation: logoAn 120s linear infinite;
+    z-index: 0;
+}
+
+.hero-btn {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50px;
+    height: 45px;
+    width: 220px;
+    margin-top: -20px;
+    z-index: 1;
+}
+
+.hero-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.download-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    align-items: flex-end;
+    padding-top: 0;
+
+    
+        .download-btn {
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background-color: $button-colour;
+            color: white;
+            border: 2px solid $button-colour;
+            border-radius: 50px;
+            height: 45px;
+            width: 300px;
+            margin-top: 0px;
+            z-index: 1;
+            transform: translate(5%, -100%);
+        }
+}
+
+// .download-image {
+//     width: 250px !important;
+//     height: 250px !important;
+//     margin: 0;
+//     margin-bottom: 0px;
+//     padding: 0;
+//     vertical-align: top;
+//     transform: translate(30%, -80%);
+
+// }
+
+
+/*----------------------------------- SECTION 2 (About Section) ----------------------------------------  */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    padding: 0 50px;
+}
+
+.about-img {
+    width: 90%;
+    animation: zoomIn 1.4s ease-in-out forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+.left-grid,
+.right-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#about .right-grid {
+    align-items: center;
+}
+
+.section-sub {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #60cc4af1;
+    text-transform: capitalize;
+    animation: bottomIn 1s ease-in-out forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+.section-title {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: bottomIn 1s ease-in-out forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+#about .left-grid .vm-title {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+#about .left-grid p,
+#projects .left-grid p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: white;
+    animation: bottomIn 1s ease-in-out forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+}
+
+.action-btn {
+    font-size: 18px;
+    color: black;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    height: 45px;
+    width: 200px;
+    background-color: #60cc4af1;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    animation: bottomIn 1s ease-in-out forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+/* ---------------------------------------------- SECTION 3 (contact us ) ------------------------------*/
+
+#join-us .content-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.join-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.input-1 {
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 50px;
+    height: 45px;
+    width: 700px;
+    padding: 0 30px;
+}
+
+.text-input {
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 50px;
+    height: 90px;
+    width: 700px;
+    padding: 0 30px;
+}
+
+.input-1::placeholder {
+    color: white;
+}
+
+#join-us p {
+    font-size: 18px;
+    letter-spacing: 1px;
+    animation: bottomIn 1s ease-in-out forwards;
+    opacity: 0;
+    animation-delay: 0.6s;
+}
+
+.join-btn {
+    background-color: #66B539;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    border: 1px solid #66B539;
+    height: 45px;
+    width: 300px;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+    animation: bottomIn 1s ease-in-out forwards;
+    opacity: 0;
+    animation-delay: 0.7s;
+}
+
+.join-btn:hover {
+    background-color: #00d11f;
+}
+
+.i1,
+.i2,
+.i3,
+.i4 {
+    animation: bottomIn 1s ease-in-out forwards;
+    opacity: 0;
+}
+
+.i1 {
+    animation-delay: 0.4s;
+}
+
+.i2 {
+    animation-delay: 0.45s;
+}
+
+.i3 {
+    animation-delay: 0.5s;
+}
+
+.i4 {
+    animation-delay: 0.55s;
+}
+
+/*---------------------------------------- SECTION 4 (footer) ----------------------------------------------------*/
+
+.welcome-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 50px;
+    column-gap: 50px;
+}
+
+.welcome-footer-grid div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#welcome-footer .headings {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: capitalize;
+    animation: bottomIn 1s ease-in-out forwards;
+    opacity: 0;
+    animation-delay: 0.2s;
+}
+
+.welcome-footer-items {
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    color: rgb(254, 253, 253);
+    cursor: pointer;
+    transition: 0.3s;
+    animation: bottomIn 1s ease-in-out forwards;
+    opacity: 0;
+}
+
+.welcome-footer-items:hover {
+    color: rgb(241, 241, 241);
+    text-shadow: 0 0 10px white;
+}
+
+#welcome-footer .welcome-section-box {
+    height: auto;
+}
+
+.copyrights {
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    color: rgb(202, 202, 202);
+    text-align: center;
+    padding: 15px;
+}
+
+#welcome-footer {
+    align-items: start;
+    height: auto;
+    padding: 65px 0;
+}
+
+.f1 {
+    animation-delay: 0.25s;
+}
+
+.f2 {
+    animation-delay: 0.3s;
+}
+
+.f3 {
+    animation-delay: 0.35s;
+}
+
+.f4 {
+    animation-delay: 0.4s;
+}
+
+.f5 {
+    animation-delay: 0.45s;
+}
+
+.f6 {
+    animation-delay: 0.5s;
+}

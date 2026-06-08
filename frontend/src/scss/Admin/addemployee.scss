@@ -1,0 +1,237 @@
+@import '~bootstrap/scss/bootstrap';
+
+/* ── Full-page background ── */
+.ae-page {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #66B539;
+    background-image: linear-gradient(60deg, #66B539, #E8F7DD, #004a3a);
+    background-size: 600% 600%;
+    animation: aeBgAnim 15s infinite linear;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+@keyframes aeBgAnim {
+    0%   { background-position: 0 85%; }
+    50%  { background-position: 100% 20%; }
+    100% { background-position: 0 85%; }
+}
+
+/* ── Back button ── */
+.ae-back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255,255,255,0.25);
+    border: 1.5px solid rgba(255,255,255,0.5);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+    z-index: 10;
+
+    &:hover { background: rgba(255,255,255,0.4); }
+
+    svg {
+        display: inline-block !important;
+        overflow: visible !important;
+        width: 14px !important;
+        height: 14px !important;
+    }
+}
+
+/* ── Card ── */
+.ae-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    padding: 40px;
+    width: 100%;
+    max-width: 700px;
+}
+
+/* ── Card header ── */
+.ae-header {
+    text-align: center;
+    margin-bottom: 28px;
+
+    h2 {
+        font-size: 24px;
+        font-weight: 800;
+        color: #1b2b1e;
+        margin: 0 0 6px;
+    }
+
+    p {
+        font-size: 13px;
+        color: #888;
+        margin: 0;
+    }
+}
+
+/* ── Tab switcher ── */
+.ae-tabs {
+    display: flex;
+    gap: 8px;
+    background: #f4faf0;
+    border-radius: 12px;
+    padding: 6px;
+    margin-bottom: 28px;
+}
+
+.ae-tab {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+
+    &.active {
+        background: #66B539;
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(102,181,57,0.35);
+    }
+
+    &:not(.active):hover { background: #e8f5e1; color: #1b4332; }
+
+    svg {
+        display: inline-block !important;
+        overflow: visible !important;
+        width: 14px !important;
+        height: 14px !important;
+    }
+}
+
+/* ── Error message ── */
+.ae-error {
+    font-size: 13px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #991b1b;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    margin: 0 0 16px;
+}
+
+/* ── Form ── */
+.ae-form { display: flex; flex-direction: column; gap: 16px; }
+
+.ae-form-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1b2b1e;
+    margin: 0 0 4px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e8f5e1;
+}
+
+/* Two-column grid */
+.ae-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Field wrapper */
+.ae-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #444;
+    }
+}
+
+/* Input with icon */
+.ae-input-wrap {
+    position: relative !important;
+
+    .ae-icon {
+        position: absolute !important;
+        left: 13px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        color: #aaa;
+        font-size: 14px;
+        pointer-events: none;
+        display: inline-block !important;
+        overflow: visible !important;
+        z-index: 1 !important;
+    }
+
+    .ae-eye {
+        position: absolute !important;
+        right: 13px !important;
+        left: auto !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        color: #aaa;
+        font-size: 14px;
+        cursor: pointer;
+        display: inline-block !important;
+        overflow: visible !important;
+        z-index: 2 !important;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 11px 13px 11px 38px;
+        border: 1.5px solid #d1d5db;
+        border-radius: 10px;
+        font-size: 14px;
+        color: #1b2b1e;
+        background: #f9fafb;
+        outline: none;
+        box-sizing: border-box;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        appearance: none;
+
+        &::placeholder { color: #bbb; }
+
+        &:focus {
+            border-color: #66B539;
+            box-shadow: 0 0 0 3px rgba(102,181,57,0.15);
+            background: #fff;
+        }
+    }
+}
+
+/* ── Submit button ── */
+.ae-btn {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #66B539, #4a9228);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: opacity 0.2s, transform 0.1s;
+
+    &:hover { opacity: 0.92; transform: translateY(-1px); }
+    &:active { transform: translateY(0); }
+}

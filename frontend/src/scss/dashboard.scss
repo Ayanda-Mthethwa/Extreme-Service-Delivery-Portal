@@ -1,0 +1,715 @@
+// ─── Design Tokens ───────────────────────────────────────────────────────────
+$sidebar-w      : 260px;
+$sidebar-bg     : #1b4332;
+$sidebar-hover  : rgba(255,255,255,0.10);
+$primary        : #2d6a4f;
+$primary-dark   : #1b4332;
+$primary-light  : #52b788;
+$accent         : #d8f3dc;
+$content-bg     : #f4f6f8;
+$card-bg        : #ffffff;
+$text-primary   : #1a1a2e;
+$text-secondary : #6c757d;
+$border         : #e9ecef;
+$danger         : #e63946;
+$topbar-h       : 72px;
+
+// ─── Reset / Base ─────────────────────────────────────────────────────────────
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: $content-bg; }
+
+// ─── Shell ────────────────────────────────────────────────────────────────────
+.dash-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: $content-bg;
+}
+
+// ─── Sidebar ──────────────────────────────────────────────────────────────────
+.dash-sidebar {
+  width: $sidebar-w;
+  min-width: $sidebar-w;
+  background: $sidebar-bg;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  z-index: 200;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+  overflow-y: auto;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 20px 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+}
+
+.sidebar-avatar {
+  width: 76px; height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.25);
+  margin-bottom: 12px;
+}
+
+.sidebar-name {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+
+.sidebar-role {
+  font-size: 11px;
+  color: $primary-light;
+  background: rgba(82,183,136,0.18);
+  padding: 3px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  color: rgba(255,255,255,0.70);
+  text-decoration: none !important;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  line-height: 1.2;
+
+  .sidebar-link-icon { width: 16px; flex-shrink: 0; }
+
+  &:hover {
+    background: $sidebar-hover;
+    color: #fff;
+  }
+
+  &.sidebar-signout {
+    color: rgba(255,120,120,0.80);
+    margin-top: 8px;
+    &:hover { background: rgba(230,57,70,0.12); color: #ff8080; }
+  }
+
+  &.sidebar-announce {
+    color: rgba(255,198,88,0.85);
+    &:hover { background: rgba(255,198,88,0.10); color: #ffc658; }
+  }
+}
+
+.sidebar-footer {
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.25);
+  font-size: 11px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+// ─── Main Area ────────────────────────────────────────────────────────────────
+.dash-main {
+  margin-left: $sidebar-w;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+.dash-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: $card-bg;
+  border-bottom: 1px solid $border;
+  min-height: $topbar-h;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  flex-shrink: 0;
+
+  .topbar-greeting {
+    font-size: 19px;
+    font-weight: 700;
+    color: $text-primary;
+    margin: 0 0 2px;
+  }
+
+  .topbar-sub {
+    font-size: 13px;
+    color: $text-secondary;
+    margin: 0;
+  }
+}
+
+.dash-content {
+  padding: 28px 32px;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  align-content: start;
+}
+
+// ─── Cards ────────────────────────────────────────────────────────────────────
+.dash-card {
+  background: $card-bg;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border: 1px solid $border;
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 0 0 4px;
+  }
+
+  .card-sub {
+    font-size: 13px;
+    color: $text-secondary;
+    margin: 0 0 20px;
+  }
+}
+
+// ─── Stat Cards ───────────────────────────────────────────────────────────────
+.stat-card {
+  background: $card-bg;
+  border-radius: 14px;
+  padding: 24px 24px 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  border: 1px solid $border;
+  transition: box-shadow 0.2s;
+
+  &:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.09); }
+
+  .stat-label {
+    font-size: 12px;
+    color: $text-secondary;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+  }
+
+  .stat-value {
+    font-size: 40px;
+    font-weight: 800;
+    color: $text-primary;
+    margin: 0;
+    line-height: 1;
+  }
+}
+
+// ─── Slideshow / Announcement Card (Citizen) ──────────────────────────────────
+.slideshow-card {
+  grid-column: 1 / -1;
+  padding: 0;
+  overflow: hidden;
+  max-height: 280px;
+  min-height: 220px;
+
+  .slideshow-img {
+    width: 100%; height: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.announcement-box {
+  padding: 32px 36px;
+  background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+  color: #fff;
+  border-radius: 14px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .ann-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    width: fit-content;
+
+    &::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: #74d680;
+      border-radius: 50%;
+    }
+  }
+
+  .ann-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    line-height: 1.3;
+  }
+
+  .ann-message {
+    font-size: 14px;
+    opacity: 0.88;
+    line-height: 1.65;
+    margin: 0 0 18px;
+  }
+
+  .ann-date {
+    font-size: 12px;
+    opacity: 0.55;
+    margin: 0 0 18px;
+  }
+
+  .ann-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    button {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #fff;
+      border-radius: 6px;
+      width: 32px; height: 32px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      transition: background 0.2s;
+      &:hover { background: rgba(255,255,255,0.25); }
+    }
+
+    span { font-size: 13px; opacity: 0.65; }
+  }
+}
+
+// ─── Report Card (Citizen) ────────────────────────────────────────────────────
+.report-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .report-card-icon {
+    width: 58px; height: 58px;
+    background: $accent;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    color: $primary;
+    margin-bottom: 16px;
+  }
+
+  h3 { font-size: 17px; font-weight: 700; color: $text-primary; margin: 0 0 8px; }
+  p { font-size: 13px; color: $text-secondary; line-height: 1.55; margin: 0 0 22px; }
+
+  .report-btn {
+    background: $primary;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    &:hover { background: $primary-dark; transform: translateY(-1px); }
+    &:active { transform: translateY(0); }
+  }
+}
+
+// ─── Quick Links Card (Citizen) ───────────────────────────────────────────────
+.quick-card {
+  h3 { font-size: 15px; font-weight: 600; color: $text-primary; margin: 0 0 16px; }
+}
+
+.quick-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.quick-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 10px;
+  background: $content-bg;
+  border-radius: 10px;
+  color: $text-primary;
+  text-decoration: none !important;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.18s, color 0.18s;
+  border: 1px solid $border;
+
+  svg { font-size: 17px; color: $primary; }
+
+  &:hover {
+    background: $accent;
+    color: $primary;
+    border-color: $primary-light;
+  }
+}
+
+// ─── Chart Card (Admin) ───────────────────────────────────────────────────────
+.chart-card {
+  grid-column: 1 / -1;
+
+  .chart-wrapper {
+    height: 340px;
+    position: relative;
+    canvas { max-height: 340px !important; }
+  }
+}
+
+// ─── Info Centre (Manager) ────────────────────────────────────────────────────
+.info-centre-card { grid-column: 1 / -1; }
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  background: $card-bg;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid $border;
+  text-decoration: none !important;
+  transition: box-shadow 0.2s, transform 0.2s;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+    transform: translateY(-3px);
+  }
+
+  .info-card-img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+  }
+
+  .info-card-body {
+    padding: 14px 16px;
+    h4 { font-size: 14px; font-weight: 700; color: $text-primary; margin: 0 0 6px; }
+    p { font-size: 12px; color: $text-secondary; line-height: 1.5; margin: 0 0 10px; }
+    .info-link { font-size: 12px; color: $primary; font-weight: 600; }
+  }
+}
+
+// ─── Notification Bell Button (Supervisor topbar) ─────────────────────────────
+.notif-btn {
+  position: relative;
+  background: $content-bg;
+  border: 1px solid $border;
+  border-radius: 8px;
+  width: 42px; height: 42px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  color: $text-primary;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  flex-shrink: 0;
+
+  &:hover { background: $accent; color: $primary; border-color: $primary-light; }
+
+  .notif-badge {
+    position: absolute;
+    top: -5px; right: -5px;
+    background: $danger;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 18px; height: 18px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 4px;
+    border: 2px solid $card-bg;
+  }
+}
+
+// ─── Notification Slide-in Panel ──────────────────────────────────────────────
+.notif-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.38);
+  z-index: 9000;
+}
+
+.notif-panel {
+  position: fixed;
+  top: 0; right: 0;
+  width: 360px; height: 100vh;
+  background: $card-bg;
+  box-shadow: -6px 0 28px rgba(0,0,0,0.16);
+  z-index: 9001;
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight 0.22s ease;
+}
+
+.notif-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid $border;
+  flex-shrink: 0;
+
+  h3 { font-size: 16px; font-weight: 700; margin: 0; color: $text-primary; }
+
+  .notif-close {
+    background: none; border: none;
+    font-size: 18px; color: $text-secondary;
+    cursor: pointer; border-radius: 6px;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    &:hover { background: $content-bg; color: $text-primary; }
+  }
+}
+
+.notif-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-thumb { background: $border; border-radius: 4px; }
+}
+
+.no-notif {
+  text-align: center;
+  color: $text-secondary;
+  padding: 48px 20px;
+  font-size: 14px;
+}
+
+.notif-item {
+  position: relative;
+  padding: 14px 40px 14px 14px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.18s;
+  border: 1px solid $border;
+
+  &.unread {
+    background: #f0faf5;
+    border-color: #b7e4c7;
+    .notif-msg { font-weight: 600; }
+  }
+
+  &.read { background: #fafafa; }
+  &:hover { background: $accent; border-color: $primary-light; }
+
+  .notif-msg {
+    font-size: 13px;
+    color: $text-primary;
+    margin: 0 0 6px;
+    line-height: 1.45;
+  }
+
+  .notif-meta {
+    display: flex;
+    gap: 14px;
+    font-size: 11px;
+    color: $text-secondary;
+  }
+
+  .notif-del {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: none; border: none;
+    color: #c9cdd4;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 4px;
+    border-radius: 4px;
+    &:hover { color: $danger; background: rgba(230,57,70,0.08); }
+  }
+}
+
+// ─── Sign-Out Modal ───────────────────────────────────────────────────────────
+.so-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.50);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: soFadeIn 0.18s ease;
+}
+
+.so-modal {
+  position: relative;
+  background: $card-bg;
+  border-radius: 16px;
+  padding: 44px 36px 36px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 16px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+  animation: soSlideUp 0.22s ease;
+
+  .so-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: none; border: none;
+    font-size: 17px; color: #adb5bd;
+    cursor: pointer; border-radius: 6px;
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    &:hover { background: $content-bg; color: $text-primary; }
+  }
+
+  .so-icon {
+    width: 68px; height: 68px;
+    background: #fff4e0;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+    font-size: 26px; color: #e67e22;
+  }
+
+  h2 { font-size: 20px; font-weight: 700; color: $text-primary; margin: 0 0 10px; }
+
+  p { color: $text-secondary; font-size: 14px; line-height: 1.6; margin: 0 0 28px; }
+
+  .so-actions {
+    display: flex; gap: 10px; justify-content: center;
+  }
+
+  .so-confirm {
+    background: #c0392b; color: #fff;
+    border: none; border-radius: 8px;
+    padding: 11px 26px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s;
+    &:hover { background: #a93226; }
+  }
+
+  .so-cancel {
+    background: $content-bg; color: #495057;
+    border: 1px solid $border; border-radius: 8px;
+    padding: 11px 26px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s;
+    &:hover { background: $border; }
+  }
+}
+
+// ─── Announcement Modal (Manager) ─────────────────────────────────────────────
+.ann-modal {
+  background: $card-bg;
+  border-radius: 16px;
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 460px;
+  margin: 0 16px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+  animation: soSlideUp 0.22s ease;
+
+  h2 {
+    font-size: 18px; font-weight: 700;
+    color: $text-primary; margin: 0 0 22px;
+    display: flex; align-items: center; gap: 10px;
+    svg { color: #e67e22; }
+  }
+
+  .ann-input, .ann-textarea {
+    width: 100%;
+    border: 1px solid $border;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    margin-bottom: 14px;
+    outline: none;
+    transition: border-color 0.18s, box-shadow 0.18s;
+    font-family: inherit;
+    &:focus { border-color: $primary; box-shadow: 0 0 0 3px rgba(45,106,79,0.12); }
+  }
+
+  .ann-textarea { resize: vertical; min-height: 100px; }
+
+  .ann-modal-btns {
+    display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px;
+  }
+
+  .ann-submit {
+    background: $primary; color: #fff; border: none;
+    border-radius: 8px; padding: 10px 24px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    transition: background 0.2s;
+    &:hover { background: $primary-dark; }
+  }
+
+  .ann-cancel-btn {
+    background: $content-bg; color: #495057;
+    border: 1px solid $border; border-radius: 8px;
+    padding: 10px 24px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s;
+    &:hover { background: $border; }
+  }
+}
+
+// ─── Animations ───────────────────────────────────────────────────────────────
+@keyframes soFadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes soSlideUp {
+  from { transform: translateY(28px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}

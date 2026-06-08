@@ -1,0 +1,333 @@
+/* Import your color variables */
+@import './colors';
+@import '~bootstrap/scss/bootstrap';
+
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+@mixin section {
+    background-color: $background-color;
+    position: absolute;
+    border-color: $section-background;
+    background-color: $section-background;
+    border-radius: 6px;
+    align-items: center;
+    transform: translate(-50%);
+}
+
+@mixin heading {
+    align-items: center;
+    text-align: center;
+}
+
+@mixin button-style {
+    background-color: $button-colour;
+    color: white;
+    border: 2px $button-colour;
+    padding: 10px 10px;
+    font-size: $font-size-footer;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    max-width: 200px;
+    min-width: 200px;
+
+    &:hover {
+        background-color: $hover-color;
+    }
+}
+
+body {
+    background-color: $background-color !important;
+}
+
+/* Home Page */
+div.citizen-dashboard {
+    background-color: $background-color !important;
+    width: 100%;
+    height: 80vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 25%;
+     border: none;
+     box-shadow: none;
+     margin-top: -0px;
+     margin-left: 0px;
+
+
+    .header, .footer {
+        width: 100%;
+        color: $text-color;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        left: 0;
+        box-sizing: border-box;
+        background-color: $accent-colour;
+        z-index: 5;
+
+        &.header {
+            top: 0;
+        }
+
+        &.footer {
+            bottom: 0;
+            font-size: 12px;
+            padding: 5px;
+        }
+
+    }
+
+    .content {
+       // margin-top: -60%; /* Adjusted to accommodate the taller header */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        flex: 1;
+        padding: 10px;
+        border: 1px solid $accent-colour;
+        position: relative;
+        z-index: 1;
+        margin-left: 00px;
+        background-color: $background-color;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        box-shadow: 10px 10px 15px 15px rgba(0, 0, 0, 0.1);
+
+        .welcome-message p{ // p after h1
+            //margin-top: 300px;
+            color: rgb(83, 69, 69);
+            font-size: $font-size-small;
+            margin-top: 0px;
+            text-align: center;
+        }
+
+        .welcome-message h1{ 
+            margin-top: 30px;
+            color:$text-color;
+            font-size: $font-size-base;
+            font-weight: 700;
+            background-color: white;
+        }
+        
+         .report-icon{//icon image
+            width: 100px; /* Adjusted width for better visibility */
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+           // transform: translate(100px, 20px);
+        }
+        
+        .report-prompt p{
+         color: $text-color;
+         font-size: $font-size-footer;
+         font-weight: 400;
+         text-align: center;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+        }
+
+        .report-prompt{     
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+
+            .report-button {
+                color: white;
+                margin-top: 10px;
+                background-color: $button-colour;
+                border-radius: 15px;
+                font-size: $font-size-small;
+                padding: 10px 60px;
+                border-color: $button-colour;
+            }
+        }
+
+
+
+        
+/* Pothole Image and Slideshow */  
+.slideshow-container {
+    width: 100%;
+    height: 50%;
+    min-width: 500px;
+    max-width: 900px;
+    max-height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    //box-shadow: 0 0px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1; // Set to 1 to ensure it's below announcements
+    
+    .slideshow-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 8s ease-in-out;
+        opacity: 0.9;
+        position: relative; // Keep this to maintain layout
+    }
+}
+}
+}
+
+
+    
+
+/* Menu */
+.sidebar {
+    background-color: $accent-colour !important; // Ensure the background color is purple
+    width: 25%;
+    margin-top: 0;
+    float: left;
+    height: 100vh;
+    margin: 0 auto 0 0;
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center; 
+    text-align: center;/* Centers content horizontally */
+
+    .links {
+        color: $text-color; 
+        font-size: 16px;
+        border: none;
+        text-align: left;
+        width: 100%;
+        margin-top: 10px; /* Ensure some spacing between the links */
+      /* Ensure text inside the link is centered */
+    }
+    
+    .dash-icon {
+        position: relative;
+        color: black; // Ensure icon color is black
+        text-decoration: none; // Ensure no underline on the icon itself
+    }
+
+    .links:hover {
+        cursor: pointer;
+        color: black;
+        background-color: $hover-color;
+    }
+
+    .sidebar h2 {
+        font-size: 2.5rem;    
+        margin-bottom: 17px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    
+    .profile-pic {
+        background: $primary-color; // Ensure the profile picture background color is purple
+        width: 150px; // Ensure width and height are equal for a circle
+        height: 150px;
+        border-radius: 50%; // Make it a perfect circle
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    /* Ensures links start at the same line */
+    .links-container {
+        display: flex;
+        flex-direction: column;
+        align-items: normal; /* Ensures all links start from the same vertical line */
+        width: 80%;
+        margin-left: 20%;
+    }
+}
+
+
+
+.announcements {
+    padding: 40px;
+    position: absolute; // Position it over the slideshow
+    top: 50%; // Center it vertically
+    left: 50%; // Center it horizontally
+    transform: translate(-50%, -50%); // Offset the element by half its width and height
+    background-color: rgb(105, 173, 91); // Use a solid background color for better visibility
+    padding: 20px; // Add some padding
+    border-radius: 20px; // Round the corners
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Add a shadow for depth
+    z-index: 2; // Ensure it's above the slideshow
+    text-align: center; // Center the text
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10%;
+    
+}
+
+.announcements h2 {
+    margin: 0 0 10px; // Add margin below heading
+    margin-top: 30px;
+    color: Red;
+
+}
+
+.announcements p {
+    margin: 0; // Remove default margin
+    color: rgb(255, 255, 255);
+    padding: 50px;
+}
+
+.announcement-navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+}
+.citizen-dashboard .announcement-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.citizen-dashboard .announcement-navigation button {
+    padding: 10px 40px;
+    background-color: #4CAF50;
+    color: rgb(219, 255, 210);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-decoration: underline; /* Ensure no underline by default */
+}
+
+.citizen-dashboard .announcement-navigation button:hover {
+    background-color: #45a049;
+}
+
+.citizen-dashboard .announcement-navigation button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Add underline under buttons */
+.citizen-dashboard .announcement-navigation button {
+    border-bottom: 2px solid #4CAF50; /* Green underline */
+}
+
+.citizen-dashboard .announcement-navigation button:hover {
+    border-bottom: 2px solid #45a049; /* Darker green underline on hover */
+}
+
+.title{
+    color: white;
+    font-size: large;
+    padding-bottom: 10px;
+}

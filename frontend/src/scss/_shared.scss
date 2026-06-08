@@ -1,0 +1,38 @@
+// ── Page Header (shared between all employee dashboards) ──────────────────
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    padding: 22px 40px;
+    background: #fff;
+    border-bottom: 2px solid #d1ffbd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    z-index: 9;
+    text-align: center;
+}
+
+.page-header-center {
+    text-align: center;
+}
+
+.page-header-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1b2b1e;
+    margin: 0 0 4px;
+}
+
+.page-header-subtitle {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+}
+
+.page-header-actions {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+}

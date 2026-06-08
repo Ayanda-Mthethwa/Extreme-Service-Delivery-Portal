@@ -1,0 +1,144 @@
+@import "~bootstrap/scss/bootstrap";
+
+// Custom Variables
+$secondary-text-colour: #151B1F;
+$accent-colour: #D1FFBD;
+$list-background: rgb(209, 255, 189,0.8);
+$text-color: #120f0f;
+$section-background: #ffffff;
+$background-color: #ffffff;
+$input-border: #808080;
+$primary-color: #00ab41;
+$hover-color: #00ab41;
+$button-colour: #66B539;
+$font-size-base: 28px;
+$font-size-footer: 16px;
+$font-size-small: 14px;
+$button-text-color: rgb(255, 255, 255);
+$secondary-colour: #66B539;
+$heading-color: #60cc4af1;
+$box-shadow: rgba(15, 215, 58, 0.312);
+$primary-text-color: #ffffff;
+$secondary-colour: #D1FFBD;
+
+.admin-home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: $background-color;
+  overflow: hidden;
+
+  .content {
+    background-color: $background-color;
+    border: 1px solid $accent-colour;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 24px;
+    margin-left: 22%;
+
+    .exd-head {
+      flex-shrink: 0;
+      background-color: $accent-colour;
+      text-align: center;
+      color: $text-color;
+      margin: 0 0 12px 0;
+      padding: 8px 10px;
+      font-size: 20px;
+      border-radius: 4px;
+    }
+
+    .chart-container {
+      flex: 1;
+      min-height: 0;
+      position: relative;
+      width: 100%;
+    }
+  }
+
+  .menu-aside {
+    background-color: $accent-colour !important;
+    width: 20%;
+    padding: 20px 10px;
+    height: 100%;
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    .profile-heading {
+      text-align: center;
+      font-size: 16px;
+      margin: 8px 0 0 0;
+    }
+
+    img.profile-pic {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    ul.menu-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0 0;
+      width: 100%;
+
+      li {
+        padding-bottom: 12px;
+      }
+
+      .menu-item {
+        background-color: $list-background;
+        color: $text-color;
+        font-size: 15px;
+        padding: 10px 14px;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px $box-shadow;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        transition: background-color 0.3s, box-shadow 0.3s;
+
+        &:hover {
+          background-color: $hover-color;
+          color: $background-color;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .header {
+    background-color: $accent-colour;
+    color: $text-color; // Changed to $text-color for contrast
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+
+  .footer {
+    background-color: $accent-colour;
+    color: #000000;
+    text-align: center;
+    padding: 10px;
+    font-size: $font-size-footer;
+    width: 100%;
+  }
+}
+

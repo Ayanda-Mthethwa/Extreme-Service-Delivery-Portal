@@ -1,0 +1,172 @@
+@import "~bootstrap/scss/bootstrap";
+
+$green:      #66B539;
+$green-dark: #4a9228;
+$accent:     #D1FFBD;
+$text:       #151B1F;
+
+/* ── Page ── */
+.mr-page {
+  width: 100vw;
+  min-height: 100vh;
+  background: #f4f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* ── Back button ── */
+.mr-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  color: #444;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  transition: background 0.2s;
+  z-index: 10;
+
+  &:hover { background: #f3f4f6; }
+
+  svg { overflow: visible !important; }
+}
+
+/* ── Card ── */
+.mr-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.09);
+  padding: 52px 44px 44px;
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ── Logo image ── */
+.mr-logo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+.mr-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: $text;
+  margin: 0 0 8px;
+}
+
+.mr-sub {
+  font-size: 14px;
+  color: #888;
+  margin: 0 0 32px;
+  line-height: 1.6;
+}
+
+/* ── Date fields ── */
+.mr-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.mr-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+
+  label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .mr-label-icon {
+    color: $green;
+    overflow: visible !important;
+  }
+
+  .mr-datepicker {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 14px;
+    color: $text;
+    background: #f9fafb;
+    outline: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &::placeholder { color: #bbb; }
+
+    &:focus {
+      border-color: $green;
+      box-shadow: 0 0 0 3px rgba(102, 181, 57, 0.15);
+      background: #fff;
+    }
+  }
+
+  .react-datepicker-wrapper,
+  .react-datepicker__input-container {
+    width: 100%;
+  }
+}
+
+/* ── Error ── */
+.mr-error {
+  font-size: 13px;
+  color: #991b1b;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 10px 14px;
+  width: 100%;
+  text-align: left;
+  margin: 0 0 16px;
+}
+
+/* ── Button ── */
+.mr-btn {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, $green, $green-dark);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: opacity 0.2s, transform 0.1s;
+
+  &:hover { opacity: 0.92; transform: translateY(-1px); }
+  &:active { transform: translateY(0); }
+
+  svg { overflow: visible !important; }
+}

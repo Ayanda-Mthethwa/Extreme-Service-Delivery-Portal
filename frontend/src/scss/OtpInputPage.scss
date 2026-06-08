@@ -1,0 +1,170 @@
+@import './colors';
+
+.otp-page {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #66B539;
+    background-image: linear-gradient(60deg, #66B539, #E8F7DD, #004a3a);
+    background-size: 600% 600%;
+    animation: otpBgAnim 15s infinite linear;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+@keyframes otpBgAnim {
+    0%   { background-position: 0 85%; }
+    50%  { background-position: 100% 20%; }
+    100% { background-position: 0 85%; }
+}
+
+.otp-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    padding: 48px 40px 40px;
+    width: 100%;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.otp-logo {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    margin-bottom: 16px;
+}
+
+.otp-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1b2b1e;
+    margin: 0 0 8px;
+}
+
+.otp-subtitle {
+    font-size: 14px;
+    color: #888;
+    margin: 0 0 28px;
+    line-height: 1.6;
+
+    strong { color: #1b2b1e; }
+}
+
+.otp-not-you {
+    color: #66B539;
+    font-weight: 600;
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+}
+
+.otp-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.otp-input {
+    width: 100%;
+    max-width: 280px;
+    padding: 16px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 12px;
+    text-align: center;
+    border: 2px solid #d1d5db;
+    border-radius: 12px;
+    background: #f9fafb;
+    outline: none;
+    color: #1b2b1e;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+
+    &::placeholder {
+        letter-spacing: 8px;
+        color: #ccc;
+        font-size: 20px;
+    }
+
+    &:focus {
+        border-color: #66B539;
+        box-shadow: 0 0 0 3px rgba(102, 181, 57, 0.15);
+        background: #fff;
+    }
+}
+
+.otp-message {
+    font-size: 13px;
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-align: left;
+    margin: 0;
+
+    &.success {
+        color: #166534;
+        background: #dcfce7;
+        border: 1px solid #bbf7d0;
+    }
+
+    &.error {
+        color: #991b1b;
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+    }
+}
+
+.otp-btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 13px;
+    background: linear-gradient(135deg, #66B539, #4a9228);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+
+    &:hover { opacity: 0.92; transform: translateY(-1px); }
+    &:active { transform: translateY(0); }
+}
+
+.otp-resend {
+    margin-top: 24px;
+    font-size: 14px;
+    color: #888;
+}
+
+.otp-countdown { margin: 0; strong { color: #1b2b1e; } }
+
+.otp-resend-btn {
+    background: none;
+    border: none;
+    color: #66B539;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    transition: color 0.2s;
+
+    &:hover { color: #4a9228; text-decoration: underline; }
+
+    svg {
+        display: inline-block !important;
+        overflow: visible !important;
+        width: 1em !important;
+        height: 1em !important;
+    }
+}

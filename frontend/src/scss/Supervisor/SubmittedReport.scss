@@ -1,0 +1,127 @@
+$green: #66b539;
+$dark-green: #1b4332;
+$light-green: #d1ffbd;
+
+.submitted-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0fff4 0%, #e8f5e1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.submitted-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(102, 181, 57, 0.15);
+  padding: 48px 40px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Animated checkmark ── */
+.success-circle {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 28px;
+}
+
+.checkmark {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.checkmark-circle {
+  stroke: $green;
+  stroke-width: 2;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark-check {
+  stroke: $green;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.4s cubic-bezier(0.65, 0, 0.45, 1) 0.5s forwards;
+}
+
+@keyframes stroke {
+  100% { stroke-dashoffset: 0; }
+}
+
+/* ── Text ── */
+.submitted-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: $dark-green;
+  margin: 0 0 12px;
+}
+
+.submitted-msg {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.submitted-divider {
+  width: 60px;
+  height: 3px;
+  background: $light-green;
+  border-radius: 2px;
+  margin: 24px 0;
+}
+
+.submitted-hint {
+  font-size: 13px;
+  color: #999;
+  margin: 0 0 32px;
+  line-height: 1.5;
+}
+
+/* ── Buttons ── */
+.submitted-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.submitted-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+
+  &.primary {
+    background-color: $dark-green;
+    color: #fff;
+    &:hover { background-color: #2d6a4f; }
+  }
+
+  &.secondary {
+    background-color: transparent;
+    border: 2px solid $green;
+    color: $green;
+    &:hover {
+      background-color: $green;
+      color: #fff;
+    }
+  }
+}
